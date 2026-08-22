@@ -37,8 +37,12 @@ Directory Name Format: `[Priority]-[Type]-[Project_Name]` (or `[Priority]-Collab
 │   ├── issues/                         ← Issue log files (OPEN-ISSUE-xxx / CLOSED-ISSUE-xxx)
 │   └── decisions/                      ← Research Decision Records (OPEN-RDR-xxx / CLOSED-RDR-xxx)
 │
-├── 01-background/                      [Stage 0: Idea Exploration] Paper (Zotero), Presentation, Product catalogs
-├── 02-discussion/                      [Stage 0: Idea Exploration] Discussion notes in Markdown (link RDR-xxx for decisions)
+├── 01-proposal/                        [Stage 0: Research Logical Rigor]
+│   ├── objective.md                    ← North Star, WHAT, WHY (Gap, Impact, Why Us, Stake)
+│   └── strategy.md                     ← HOW (Strategy, Technical Risks & Plan B, Kill Criteria)
+│
+├── 02-background/                      [Stage 0: Idea Exploration] Papers (Zotero), Literature notes, BibTeX
+├── 03-discussion/                      [Stage 0: Idea Exploration] Discussion notes in Markdown
 │
 ├── 11-blueprint/                       [Stage 1: Equipment / HW & SW Blueprint] Schematics, parts, quotes, SW spec
 ├── 12-implementation/                  [Stage 1: HW & Implementation] Build process logs & operation instructions
@@ -51,13 +55,12 @@ Directory Name Format: `[Priority]-[Type]-[Project_Name]` (or `[Priority]-Collab
 │
 ├── 31-review/                          [Stage 3: Internal Review & Gate Check]
 │   ├── analysis.md                     ← Result interpretation & findings
-│   ├── narrative.md                    ← Storytelling direction & core claims
-│   └── gate.md                         ← Go / Rollback decision record
+│   └── gate.md                         ← Storytelling direction & Go / Rollback gate decision record
 │
 ├── 32-figure/                          [Stage 3: Figure Design]
-│   ├── Outline: Claim & figure flow breakdown
-│   ├── Subfigures: Individual figure components
-│   └── Figure: Final assembled figure panels
+│   ├── Outline                         ← Panel breakdown & figure captions
+│   ├── Subfigures                      ← Individual figure components
+│   └── Figure                          ← Final assembled figure panels (.ai, .svg, .png)
 │
 ├── 41-manuscript/                      [Stage 4: External Publication]
 │   ├── Manuscript                      ← Main paper text
@@ -158,8 +161,45 @@ Directory Name Format: `[Priority]-[Type]-[Project_Name]` (or `[Priority]-Collab
 
 ## Quick Links & Index
 - **Audit Logs**: [00-log/](00-log/)
-- **Background**: [01-background/](01-background/)
+- **Code**: [13-code/](13-code/)
+- **Data**: [21-data/](21-data/)
 - **Review & Gate**: [31-review/gate.md](31-review/gate.md)
+### `01-proposal/objective.md`
+```markdown
+# Research Objective & Rationale (WHY)
+
+## 1. North Star (Core Objective)
+- **One-Sentence Claim**: [Single sentence defining the ultimate objective]
+
+## 2. WHAT
+- **Core Technical Goal**: [Clear description of what will be established]
+
+## 3. WHY - Rationale & Value
+- **Scientific Gap**: [Unresolved scientific/technical gap]
+- **Practical Impact**: [Who can do what differently if successful?]
+- **Why Now**: [Why is this possible/necessary now? (Technological maturity, data)]
+- **Why Us**: [Why is our lab uniquely equipped to solve this?]
+- **Personal Stake**: [Why is this project personally meaningful?]
+```
+
+### `01-proposal/strategy.md`
+```markdown
+# Execution Strategy & Risk Mitigation (HOW)
+
+## 1. Strategy
+- 1. [Phase 1 strategy & key approach]
+- 2. [Phase 2 strategy & model training/analysis]
+- 3. [Phase 3 validation & rule-based quantification]
+
+## 2. Technical Risks & Mitigation Plan
+| Risk Description | Severity | Mitigation / Plan B |
+|---|---|---|
+| Risk 1: [Unexpected artifact/noise] | High | Plan B: [Indirect validation or alternative modal] |
+| Risk 2: [Low throughput or resolution] | Medium | Plan B: [Downsampling / FOV adjustment] |
+
+## 3. Kill / Pivot Criteria
+- **Criterion 1**: [Specific metric threshold where project should be killed or pivoted]
+- **Criterion 2**: [Time limit if no progress seen within X months]
 ```
 
 ### `31-review/analysis.md`
@@ -171,23 +211,25 @@ Directory Name Format: `[Priority]-[Type]-[Project_Name]` (or `[Priority]-Collab
 - **Data References**: `21-data/processed/`
 ```
 
-### `31-review/narrative.md`
+### `31-review/gate.md`
 ```markdown
-# Narrative & Storytelling Direction
+# Stage 3 Gate Review & Narrative (Go / Rollback Decision)
 
+- **Status**: Pending
+- **Decision Date**: YYYY-MM-DD
+- **Verdict**: [ ] Go (Proceed to Stage 4) | [ ] Rollback (Return to Stage 0/1/2)
+- **Linked RDR**:
+
+## 1. Narrative & Storytelling Direction
 - **Target Audience / Journal**:
 - **Main Takeaway (Core Claim)**:
 - **Key Figures Flow**:
-```
 
-### `31-review/gate.md`
-```markdown
-# Stage 3 Gate Review (Go / Rollback Decision)
-
-- **Status**: Pending
-- **Decision Date**:
-- **Verdict**: [ ] Go (Proceed to Stage 4) | [ ] Rollback (Return to Stage 0/1/2)
-- **Linked RDR**:
+## 2. Gate Decision & Justification
+- **Key Findings Summary**: (Refer to `31-review/analysis.md`)
+- **Action Plan**:
+  - If Go: Advance to `32-figure/` and Stage 4 (`41-manuscript/`).
+  - If Rollback: Target Stage (`01-proposal/`, `11-blueprint/`, `21-data/`) and reason.
 ```
 
 ---
@@ -200,7 +242,7 @@ Directory Name Format: `[Priority]-[Type]-[Project_Name]` (or `[Priority]-Collab
 3. **Extraction Check**: If the solution is reusable across future lab projects, extract it to `3_Resources/SOP-` or `3_Resources/Code-`.
 
 ### Go / Rollback Gate Workflow
-1. Complete `31-review/analysis.md` (results) and `31-review/narrative.md` (storyline).
-2. Evaluate `31-review/gate.md`:
+1. Complete `31-review/analysis.md` (results) and define storytelling direction in `31-review/gate.md`.
+2. Evaluate `31-review/gate.md` for final Go / Rollback decision:
    * **Go**: Advance to `32-figure/` and Stage 4 (`41-manuscript/`).
-   * **Rollback**: Return to Stage 0 (`01-background/`), Stage 1 (`11-blueprint/`), or Stage 2 (`21-data/raw/YYYY-MM-DD/`). Log an RDR (`OPEN-RDR-xxx-Gate-[Reason].md`).
+   * **Rollback**: Return to Stage 0 (`01-proposal/`), Stage 1 (`11-blueprint/`), or Stage 2 (`21-data/raw/YYYY-MM-DD/`). Log an RDR (`OPEN-RDR-xxx-Gate-[Reason].md`).
