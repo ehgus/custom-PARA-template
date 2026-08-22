@@ -4,7 +4,7 @@ This workspace (`c:\Users\labdo\Desktop\BMOL`) is managed based on the **PARA Me
 
 ---
 
-## 📂 PARA Directory Structure
+## PARA Directory Structure
 
 Maintain the following 4 core folder structures at the root directory level and adhere to the classification principles:
 
@@ -22,7 +22,7 @@ BMOL/
 
 ---
 
-## 📌 Categorization & Naming Rules
+## Categorization & Naming Rules
 
 ### Shared Prefix Pool
 The following prefixes can be used across **`1_Projects/`**, **`2_Areas/`**, and **`3_Resources/`** to maintain visual consistency:
@@ -95,7 +95,7 @@ The following prefixes can be used across **`1_Projects/`**, **`2_Areas/`**, and
 
 ---
 
-## 🤖 Rules for AI Agent (Antigravity)
+## Rules for AI Agent (Antigravity)
 
 1. **File Creation & Location**:
    * Always place newly generated code, notes, or files under the appropriate PARA directory (`1_Projects`, `2_Areas`, or `3_Resources`).
@@ -114,3 +114,8 @@ The following prefixes can be used across **`1_Projects/`**, **`2_Areas/`**, and
 5. **Literature & References**:
    * Manage bulk paper PDF files via reference management tools like Zotero. Keep summary notes and links under `3_Resources/Ref-Literature_Notes/`.
 
+6. **Formatting Policy**:
+   * Do NOT use emojis in `AGENTS.md` or workspace documentation files. Keep formatting clean and plain markdown.
+
+7. **Skill Naming Policy**:
+   * When creating or defining new skills, always start the skill name with an action verb using lowercase kebab-case (e.g., `init-project` instead of `project-init`).
