@@ -119,3 +119,6 @@ The following prefixes can be used across **`1_Projects/`**, **`2_Areas/`**, and
 
 7. **Skill Naming Policy**:
    * When creating or defining new skills, always start the skill name with an action verb using lowercase kebab-case (e.g., `init-project` instead of `project-init`).
+
+8. **README.md Policy**:
+   * Do NOT modify, edit, or overwrite `README.md` files inside any folder. These files are managed by the user. Only read them for context unless explicitly requested to modify them.
