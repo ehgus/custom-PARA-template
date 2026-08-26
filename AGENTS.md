@@ -124,3 +124,9 @@ The following prefixes can be used across **`1_Projects/`**, **`2_Areas/`**, and
 
 8. **README.md Policy**:
    * Do NOT modify, edit, or overwrite `README.md` files inside any folder. These files are managed by the user. Only read them for context unless explicitly requested to modify them.
+
+9. **GitHub Issue Management Policy**:
+   * All GitHub issues and pull requests created for this workspace MUST be written entirely in **English**.
+   * When generating issues, follow the standard templates:
+     * **BUG**: Describe the conflict or error with the current PARA rules, how to reproduce it, and the expected behavior. (Prefix title with `BUG: `)
+     * **ENHANCEMENT**: Describe the new feature, folder prefix, or rule change, and the justification for why it improves the workspace. (Prefix title with `ENHANCEMENT: `)
