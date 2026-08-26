@@ -155,15 +155,50 @@ Directory Name Format: `[Priority]-[Type]-[Project_Name]` (or `[Priority]-Collab
 ```markdown
 # [Priority]-[Type]-[Project_Name]
 
-- **Created Date**: YYYY-MM-DD
-- **Current Stage**: Stage 0 (Idea Exploration)
-- **Primary Goal**: [Short description of project goal]
+# 1. Summary
 
-## Quick Links & Index
+- Goal: [Short description of project goal]
+- Key result so far: 
+- Next milestone: 
+
+# 2. Objective
+
+## 2.1 What
+
+## 2.2 Why
+
+## 2.3 How
+
+# 3. Background & Related Work
+
+- 
+
+# 4. Experiment Log
+
+[YYYY.MM.DD 요일]
+- 
+
+# 5. Discussion Log
+
+[YYYY.MM.DD 요일]
+- 
+
+# 6. Current Results
+
+- 
+
+# 7. Future work
+
+- 
+
+# 8. Quick Links & Index
+- **Proposal & Rigor**: [01-proposal/objective.md](01-proposal/objective.md)
 - **Audit Logs**: [00-log/](00-log/)
 - **Code**: [13-code/](13-code/)
 - **Data**: [21-data/](21-data/)
 - **Review & Gate**: [31-review/gate.md](31-review/gate.md)
+```
+
 ### `01-proposal/objective.md`
 ```markdown
 # Research Objective & Rationale (WHY)
