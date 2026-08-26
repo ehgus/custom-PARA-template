@@ -112,7 +112,9 @@ The following prefixes can be used across **`1_Projects/`**, **`2_Areas/`**, and
    * When encountering Windows shortcut files (`.lnk`), transparently resolve and treat them as the actual target directory or file for reading, writing, and navigation.
 
 5. **Literature & References**:
-   * Manage bulk paper PDF files via reference management tools like Zotero. Keep summary notes and links under `3_Resources/Ref-Literature_Notes/`.
+   * Manage bulk paper PDF files via reference management tools like Zotero.
+   * By default, new references, materials, or literature notes created while working inside a project MUST be placed in that project's background folder (e.g., `1_Projects/[Project_Name]/02-background/`).
+   * These materials should ONLY be moved to `3_Resources/` when the user explicitly requests to share them globally across the workspace.
 
 6. **Formatting Policy**:
    * Do NOT use emojis in `AGENTS.md` or workspace documentation files. Keep formatting clean and plain markdown.
