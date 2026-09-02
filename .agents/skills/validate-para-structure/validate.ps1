@@ -1,6 +1,6 @@
 $ErrorActionPreference = "Stop"
 
-$workspace_root = "c:\Users\labdo\Desktop\BMOL"
+$workspace_root = (Get-Item "$PSScriptRoot\..\..\..").FullName
 
 $categories = [ordered]@{
     "1_Projects" = "^0[1-4]-([a-zA-Z0-9_\p{L}]+-)*[a-zA-Z0-9_\p{L}]+$"

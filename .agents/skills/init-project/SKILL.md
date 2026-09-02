@@ -1,11 +1,11 @@
 ---
 name: init-project
-description: Initialize a new structured research project folder inside 1_Projects/ following the BMOL 5-stage project template guidelines.
+description: Initialize a new structured project folder inside 1_Projects/ following the general 5-stage project template guidelines.
 ---
 
 # Init Project Skill
 
-This skill automates the creation of a new research project folder inside `1_Projects/` following the BMOL 5-stage project management specification.
+This skill automates the creation of a new project folder inside `1_Projects/` following the general 5-stage project management specification.
 
 ## Project Naming Convention
 
@@ -18,11 +18,11 @@ Directory Name Format: `[Priority]-[Type]-[Project_Name]` (or `[Priority]-Collab
    * `03-`: Important & Not Urgent
    * `04-`: Not Important & Not Urgent
 2. **Shared Prefixes (`[Type]`)**:
-   * `Paper-`, `Grant-`, `Collab-`, `Research-`, `Lab-`, `Admin-`, `Template-`, `Ref-`, `SOP-`, `Code-`
+   * `Paper-`, `Grant-`, `Collab-`, `Domain-`, `Ops-`, `Admin-`, `Template-`, `Ref-`, `SOP-`, `Code-`
 3. **Delimiter Policy**:
    * **Hyphens (`-`)**: Used exclusively for structural delimiters (priority, prefix, dates).
    * **Underscores (`_`)**: Used **exclusively** for separating words inside `[Project_Name]`.
-4. **Examples**: `01-Paper-Bacteria_Review`, `03-Paper-Data_Compression`, `01-Collab-Paper-강융-Ptychographic_Tomography`
+4. **Examples**: `01-Project-Website_Redesign`, `03-Task-Q3_Report`, `01-Collab-Project-Alex-New_Campaign`
 
 ---
 
@@ -35,41 +35,37 @@ Directory Name Format: `[Priority]-[Type]-[Project_Name]` (or `[Priority]-Collab
 │
 ├── 00-log/                             ← Audit trail & lifecycle logs
 │   ├── issues/                         ← Issue log files (OPEN-ISSUE-xxx / CLOSED-ISSUE-xxx)
-│   └── decisions/                      ← Research Decision Records (OPEN-RDR-xxx / CLOSED-RDR-xxx)
+│   └── decisions/                      ← Decision Records (OPEN-DR-xxx / CLOSED-DR-xxx)
 │
-├── 01-proposal/                        [Stage 0: Research Logical Rigor]
-│   ├── objective.md                    ← North Star, WHAT, WHY (Gap, Impact, Why Us, Stake)
-│   └── strategy.md                     ← HOW (Strategy, Technical Risks & Plan B, Kill Criteria)
+├── 01-planning/                        [Stage 0: Project Planning & Proposal]
+│   ├── objective.md                    ← North Star, WHAT, WHY (Gap, Impact, Stake)
+│   └── strategy.md                     ← HOW (Strategy, Risks & Plan B, Pivot Criteria)
 │
-├── 02-background/                      [Stage 0: Idea Exploration] Papers (Zotero), Literature notes, BibTeX
+├── 02-background/                      [Stage 0: Idea Exploration] References, notes, resources
 ├── 03-discussion/                      [Stage 0: Idea Exploration] Discussion notes in Markdown
 │
-├── 11-blueprint/                       [Stage 1: Equipment / HW & SW Blueprint] Schematics, parts, quotes, SW spec
-├── 12-implementation/                  [Stage 1: HW & Implementation] Build process logs & operation instructions
-├── 13-code/                            [Stage 1: Software Code & Git] SW version control (git), commit hash links in RDR
+├── 11-blueprint/                       [Stage 1: Design & Blueprint] Specifications, designs, architecture
+├── 12-implementation/                  [Stage 1: Development] Execution logs & operation instructions
+├── 13-code/                            [Stage 1: Software Code & Git] Version control (git)
 │
 ├── 21-data/                            [Stage 2: Execution & Results]
-│   ├── raw/                            ← Read-only raw data (isolated by YYYY-MM-DD/ subfolders)
-│   ├── processed/                      ← Processed data & CSV/Plots for visualization
-│   └── experimental/                   ← Protocol notes & experimental execution logs
+│   ├── raw/                            ← Read-only raw data or inputs
+│   ├── processed/                      ← Processed outputs & visualizations
+│   └── execution/                      ← Execution logs and workflow notes
 │
 ├── 31-review/                          [Stage 3: Internal Review & Gate Check]
 │   ├── analysis.md                     ← Result interpretation & findings
-│   └── gate.md                         ← Storytelling direction & Go / Rollback gate decision record
+│   └── gate.md                         ← Delivery direction & Go / Rollback gate decision record
 │
-├── 32-figure/                          [Stage 3: Figure Design]
-│   ├── Outline                         ← Panel breakdown & figure captions
-│   ├── Subfigures                      ← Individual figure components
-│   └── Figure                          ← Final assembled figure panels (.ai, .svg, .png)
+├── 32-deliverables/                    [Stage 3: Deliverables Design]
+│   ├── Drafts                          ← Draft components
+│   └── Final                           ← Final assembled assets
 │
-├── 41-manuscript/                      [Stage 4: External Publication]
-│   ├── Manuscript                      ← Main paper text
-│   ├── Cover letter                    ← Editor cover letter
-│   ├── Supplementary material          ← SI documents & data
-│   └── Peer review and response        ← Rebuttal & reviewer response
+├── 41-finalization/                    [Stage 4: Delivery & Finalization]
+│   ├── Report                          ← Final reports and documentation
+│   └── Handoff                         ← Client or team handoff materials
 │
-├── 42-presentation/                    [Stage 4: Conference slides & talk materials]
-└── 43-patent/                          [Stage 4: Patent applications & filings]
+└── 42-presentation/                    [Stage 4: Presentation & slide materials]
 ```
 
 ---
@@ -78,25 +74,25 @@ Directory Name Format: `[Priority]-[Type]-[Project_Name]` (or `[Priority]-Collab
 
 | Stage Index | Phase | Description |
 |---|---|---|
-| `00-` | **Audit Logs** | Issues log (`00-log/issues/`) & Research Decision Records (`00-log/decisions/`) |
-| `01-`, `02-` | **Stage 0: Idea Exploration** | Literature background (`01-background/`), discussion notes (`02-discussion/`) |
-| `11-`, `12-`, `13-` | **Stage 1: Implementation** | Blueprints (`11-blueprint/`), build logs (`12-implementation/`), code (`13-code/`) |
-| `21-` | **Stage 2: Execution** | Raw data (`21-data/raw/YYYY-MM-DD/`), processed data, experimental protocols |
-| `31-`, `32-` | **Stage 3: Internal Review** | Analysis (`31-review/`), figure outlines & panels (`32-figure/`), Go/Rollback gate |
-| `41-`, `42-`, `43-` | **Stage 4: Publication** | Manuscripts (`41-manuscript/`), slides (`42-presentation/`), patents (`43-patent/`) |
+| `00-` | **Audit Logs** | Issues log (`00-log/issues/`) & Decision Records (`00-log/decisions/`) |
+| `01-`, `02-`, `03-` | **Stage 0: Planning** | Objectives (`01-planning/`), background (`02-background/`), discussion notes (`03-discussion/`) |
+| `11-`, `12-`, `13-` | **Stage 1: Design** | Blueprints (`11-blueprint/`), development (`12-implementation/`), code (`13-code/`) |
+| `21-` | **Stage 2: Execution** | Raw data/inputs (`21-data/raw/`), processed data, execution logs |
+| `31-`, `32-` | **Stage 3: Review** | Analysis (`31-review/`), deliverables (`32-deliverables/`), Go/Rollback gate |
+| `41-`, `42-` | **Stage 4: Delivery** | Finalization (`41-finalization/`), slides (`42-presentation/`) |
 
 ---
 
 ## 00-log File Naming & Templates
 
 ### File Status Matrix
-| Status | Issue Log | Research Decision Record (RDR) |
+| Status | Issue Log | Decision Record (DR) |
 |---|---|---|
-| In Progress | `OPEN-ISSUE-001-[Title].md` | `OPEN-RDR-001-[Title].md` |
-| Resolved / Closed | `CLOSED-ISSUE-001-[Title].md` | `CLOSED-RDR-001-[Title].md` |
+| In Progress | `OPEN-ISSUE-001-[Title].md` | `OPEN-DR-001-[Title].md` |
+| Resolved / Closed | `CLOSED-ISSUE-001-[Title].md` | `CLOSED-DR-001-[Title].md` |
 
 * When resolved, rename `OPEN-` to `CLOSED-` (keep file contents).
-* Sequential numbers are incremented independently for Issues and RDRs.
+* Sequential numbers are incremented independently for Issues and DRs.
 
 ### 1. Issue Template (`OPEN-ISSUE-001-[Title].md`)
 ```markdown
@@ -110,7 +106,7 @@ Directory Name Format: `[Priority]-[Type]-[Project_Name]` (or `[Priority]-Collab
 ## Problem Description
 
 ## Reproduction Steps / Environment
-- Script/Protocol:
+- Component/Context:
 - Parameters/Inputs:
 - Error Log:
 
@@ -124,14 +120,13 @@ Directory Name Format: `[Priority]-[Type]-[Project_Name]` (or `[Priority]-Collab
 - Extracted Resource: → `3_Resources/...` (if reusable)
 ```
 
-### 2. Decision Template (`OPEN-RDR-001-[Title].md`)
+### 2. Decision Template (`OPEN-DR-001-[Title].md`)
 ```markdown
-# RDR-001: [Title]
+# DR-001: [Title]
 
 - **Status**: Proposed | Accepted | Superseded
 - **Date**: YYYY-MM-DD
 - **Related Stage**: 13-code | 11-blueprint | ...
-- **Related Commit**: (Git commit hash, e.g. `abc1234`)
 
 ## Context & Problem Statement
 
@@ -173,14 +168,14 @@ Directory Name Format: `[Priority]-[Type]-[Project_Name]` (or `[Priority]-Collab
 
 - 
 
-# 4. Experiment Log
+# 4. Execution Log
 
-[YYYY.MM.DD 요일]
+[YYYY.MM.DD]
 - 
 
 # 5. Discussion Log
 
-[YYYY.MM.DD 요일]
+[YYYY.MM.DD]
 - 
 
 # 6. Current Results
@@ -192,49 +187,48 @@ Directory Name Format: `[Priority]-[Type]-[Project_Name]` (or `[Priority]-Collab
 - 
 
 # 8. Quick Links & Index
-- **Proposal & Rigor**: [01-proposal/objective.md](01-proposal/objective.md)
+- **Planning & Objective**: [01-planning/objective.md](01-planning/objective.md)
 - **Audit Logs**: [00-log/](00-log/)
-- **Code**: [13-code/](13-code/)
-- **Data**: [21-data/](21-data/)
+- **Code/Implementation**: [13-code/](13-code/)
+- **Data/Inputs**: [21-data/](21-data/)
 - **Review & Gate**: [31-review/gate.md](31-review/gate.md)
 ```
 
-### `01-proposal/objective.md`
+### `01-planning/objective.md`
 ```markdown
-# Research Objective & Rationale (WHY)
+# Project Objective & Rationale (WHY)
 
 ## 1. North Star (Core Objective)
 - **One-Sentence Claim**: [Single sentence defining the ultimate objective]
 
 ## 2. WHAT
-- **Core Technical Goal**: [Clear description of what will be established]
+- **Core Goal**: [Clear description of what will be established]
 
 ## 3. WHY - Rationale & Value
-- **Scientific Gap**: [Unresolved scientific/technical gap]
+- **Business/Task Gap**: [Unresolved gap or problem]
 - **Practical Impact**: [Who can do what differently if successful?]
-- **Why Now**: [Why is this possible/necessary now? (Technological maturity, data)]
-- **Why Us**: [Why is our lab uniquely equipped to solve this?]
-- **Personal Stake**: [Why is this project personally meaningful?]
+- **Why Now**: [Why is this possible/necessary now?]
+- **Why Us/Me**: [Why are we uniquely equipped to solve this?]
 ```
 
-### `01-proposal/strategy.md`
+### `01-planning/strategy.md`
 ```markdown
 # Execution Strategy & Risk Mitigation (HOW)
 
 ## 1. Strategy
 - 1. [Phase 1 strategy & key approach]
-- 2. [Phase 2 strategy & model training/analysis]
-- 3. [Phase 3 validation & rule-based quantification]
+- 2. [Phase 2 execution]
+- 3. [Phase 3 validation & finalization]
 
-## 2. Technical Risks & Mitigation Plan
+## 2. Risks & Mitigation Plan
 | Risk Description | Severity | Mitigation / Plan B |
 |---|---|---|
-| Risk 1: [Unexpected artifact/noise] | High | Plan B: [Indirect validation or alternative modal] |
-| Risk 2: [Low throughput or resolution] | Medium | Plan B: [Downsampling / FOV adjustment] |
+| Risk 1: [Description] | High | Plan B: [Alternative] |
+| Risk 2: [Description] | Medium | Plan B: [Alternative] |
 
 ## 3. Kill / Pivot Criteria
-- **Criterion 1**: [Specific metric threshold where project should be killed or pivoted]
-- **Criterion 2**: [Time limit if no progress seen within X months]
+- **Criterion 1**: [Specific metric/event where project should be killed or pivoted]
+- **Criterion 2**: [Time limit if no progress seen within X timeframe]
 ```
 
 ### `31-review/analysis.md`
@@ -243,28 +237,28 @@ Directory Name Format: `[Priority]-[Type]-[Project_Name]` (or `[Priority]-Collab
 
 - **Date**: YYYY-MM-DD
 - **Key Findings**:
-- **Data References**: `21-data/processed/`
+- **Data/Assets References**: `21-data/processed/`
 ```
 
 ### `31-review/gate.md`
 ```markdown
-# Stage 3 Gate Review & Narrative (Go / Rollback Decision)
+# Stage 3 Gate Review (Go / Rollback Decision)
 
 - **Status**: Pending
 - **Decision Date**: YYYY-MM-DD
 - **Verdict**: [ ] Go (Proceed to Stage 4) | [ ] Rollback (Return to Stage 0/1/2)
-- **Linked RDR**:
+- **Linked DR**:
 
-## 1. Narrative & Storytelling Direction
-- **Target Audience / Journal**:
-- **Main Takeaway (Core Claim)**:
-- **Key Figures Flow**:
+## 1. Delivery Direction
+- **Target Audience / Stakeholder**:
+- **Main Takeaway**:
+- **Key Deliverables Flow**:
 
 ## 2. Gate Decision & Justification
 - **Key Findings Summary**: (Refer to `31-review/analysis.md`)
 - **Action Plan**:
-  - If Go: Advance to `32-figure/` and Stage 4 (`41-manuscript/`).
-  - If Rollback: Target Stage (`01-proposal/`, `11-blueprint/`, `21-data/`) and reason.
+  - If Go: Advance to `32-deliverables/` and Stage 4 (`41-finalization/`).
+  - If Rollback: Target Stage (`01-planning/`, `11-blueprint/`, `21-data/`) and reason.
 ```
 
 ---
@@ -272,12 +266,12 @@ Directory Name Format: `[Priority]-[Type]-[Project_Name]` (or `[Priority]-Collab
 ## Project Workflows
 
 ### Issue & Solution Extraction Workflow
-1. When a problem arises, create `OPEN-ISSUE-xxx` or `OPEN-RDR-xxx` in `00-log/`.
+1. When a problem arises, create `OPEN-ISSUE-xxx` or `OPEN-DR-xxx` in `00-log/`.
 2. Resolve issue and rename `OPEN-` to `CLOSED-`.
-3. **Extraction Check**: If the solution is reusable across future lab projects, extract it to `3_Resources/SOP-` or `3_Resources/Code-`.
+3. **Extraction Check**: If the solution is reusable across future projects, extract it to `3_Resources/SOP-` or `3_Resources/Code-`.
 
 ### Go / Rollback Gate Workflow
-1. Complete `31-review/analysis.md` (results) and define storytelling direction in `31-review/gate.md`.
+1. Complete `31-review/analysis.md` (results) and define delivery direction in `31-review/gate.md`.
 2. Evaluate `31-review/gate.md` for final Go / Rollback decision:
-   * **Go**: Advance to `32-figure/` and Stage 4 (`41-manuscript/`).
-   * **Rollback**: Return to Stage 0 (`01-proposal/`), Stage 1 (`11-blueprint/`), or Stage 2 (`21-data/raw/YYYY-MM-DD/`). Log an RDR (`OPEN-RDR-xxx-Gate-[Reason].md`).
+   * **Go**: Advance to `32-deliverables/` and Stage 4 (`41-finalization/`).
+   * **Rollback**: Return to Stage 0 (`01-planning/`), Stage 1 (`11-blueprint/`), or Stage 2 (`21-data/raw/`). Log a Decision Record (`OPEN-DR-xxx-Gate-[Reason].md`).

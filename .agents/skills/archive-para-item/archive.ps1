@@ -3,7 +3,7 @@ param (
     [string]$TargetPath
 )
 
-$WorkspaceRoot = "c:\Users\labdo\Desktop\BMOL"
+$WorkspaceRoot = (Get-Item "$PSScriptRoot\..\..\..").FullName
 
 $AbsTarget = $ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath($TargetPath)
 
