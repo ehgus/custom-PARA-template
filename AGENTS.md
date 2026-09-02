@@ -131,3 +131,7 @@ The following prefixes can be used across **`1_Projects/`**, **`2_Areas/`**, and
    * When generating issues, follow the standard templates:
      * **BUG**: Describe the conflict or error with the current PARA rules, how to reproduce it, and the expected behavior. (Prefix title with `BUG: `)
      * **ENHANCEMENT**: Describe the new feature, folder prefix, or rule change, and the justification for why it improves the workspace. (Prefix title with `ENHANCEMENT: `)
+
+8. **Mandatory Structure Validation**:
+   * Any operation that creates, renames, or moves a directory inside `1_Projects/`, `2_Areas/`, or `3_Resources/` MUST be immediately followed by the execution of the `validate-para-structure` skill.
+   * **Zero Tolerance**: If the validation skill returns an error (exit code > 0), the agent must immediately halt, revert the structural change, and report the syntax violation. Do not attempt to bypass the error or proceed with subsequent tasks until the naming syntax passes validation.
