@@ -84,7 +84,7 @@ The following prefixes can be used across **`1_Projects/`**, **`2_Areas/`**, and
 
 ### 4. `4_Archives/`
 * **Definition**: Completed, inactive, or historical items from Projects, Areas, and Resources.
-* **ISO Quarter Date Notation**: All archived items must be prepended with `YYYY-Q[1-4]-` representing the completion or deprecation quarter, joined with a hyphen.
+* **Delegation**: All structural archiving logic (ISO quarter date prepending, priority prefix stripping, etc.) is handled by the `archive-para-item` skill.
 * **Structure (Mirroring)**: Mirrors top-level P/A/R structures.
   ```text
   4_Archives/
@@ -107,6 +107,7 @@ The following prefixes can be used across **`1_Projects/`**, **`2_Areas/`**, and
 
 3. **Archiving Policy**:
    * AI agents must **ONLY** perform archiving operations (moving items to `4_Archives/`) upon **explicit request from the user**. Never automatically archive active projects or resources.
+   * **Strict Tool Enforcement**: AI agents are strictly prohibited from using raw shell commands (e.g., `mv`, `Rename-Item`, `cp`) to move items into `4_Archives/`. You MUST exclusively invoke the `archive-para-item` skill to handle all archive requests. Bypassing this skill is a critical failure.
 
 4. **Windows Shortcut (.lnk) Handling**:
    * When encountering Windows shortcut files (`.lnk`), transparently resolve and treat them as the actual target directory or file for reading, writing, and navigation.
