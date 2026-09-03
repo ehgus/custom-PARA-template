@@ -33,7 +33,7 @@ Directory Name Format: `[Priority]-[Type]-[Project_Name]` (or `[Priority]-Collab
 │
 ├── README.md                           ← Project overview & stage status
 │
-├── 00-log/                             ← Audit trail & lifecycle logs
+├── 00-log/                             ← Audit trail & lifecycle logs (Managed by init-log skill)
 │   ├── issues/                         ← Issue log files (OPEN-ISSUE-xxx / CLOSED-ISSUE-xxx)
 │   └── decisions/                      ← Decision Records (OPEN-DR-xxx / CLOSED-DR-xxx)
 │
@@ -74,7 +74,7 @@ Directory Name Format: `[Priority]-[Type]-[Project_Name]` (or `[Priority]-Collab
 
 | Stage Index | Phase | Description |
 |---|---|---|
-| `00-` | **Audit Logs** | Issues log (`00-log/issues/`) & Decision Records (`00-log/decisions/`) |
+| `00-` | **Audit Logs** | Issues log (`00-log/issues/`) & Decision Records (`00-log/decisions/`) — Delegated to `init-log` skill |
 | `01-`, `02-`, `03-` | **Stage 0: Planning** | Objectives (`01-planning/`), background (`02-background/`), discussion notes (`03-discussion/`) |
 | `11-`, `12-`, `13-` | **Stage 1: Design** | Blueprints (`11-blueprint/`), development (`12-implementation/`), code (`13-code/`) |
 | `21-` | **Stage 2: Execution** | Raw data/inputs (`21-data/raw/`), processed data, execution logs |
@@ -83,64 +83,17 @@ Directory Name Format: `[Priority]-[Type]-[Project_Name]` (or `[Priority]-Collab
 
 ---
 
-## 00-log File Naming & Templates
+## 00-log Initialization & Templates (Delegated to `init-log`)
 
-### File Status Matrix
-| Status | Issue Log | Decision Record (DR) |
-|---|---|---|
-| In Progress | `OPEN-ISSUE-001-[Title].md` | `OPEN-DR-001-[Title].md` |
-| Resolved / Closed | `CLOSED-ISSUE-001-[Title].md` | `CLOSED-DR-001-[Title].md` |
+The `00-log/` audit trail directory (`issues/` and `decisions/`), file naming conventions, status matrices (`OPEN-` / `CLOSED-`), and templates (`OPEN-ISSUE-xxx`, `OPEN-DR-xxx`) are standardized and managed by the dedicated **`init-log`** skill.
 
-* When resolved, rename `OPEN-` to `CLOSED-` (keep file contents).
-* Sequential numbers are incremented independently for Issues and DRs.
+- **Initialization**: Run `init-log` (or `powershell .\.agents\skills\init-log\init-log.ps1 -TargetPath <ProjectPath>`) to set up `00-log/issues/` and `00-log/decisions/` within the project root.
+- **Templates & Rules**: Refer to the [`init-log`](../init-log/SKILL.md) skill documentation for:
+  - Issue Template (`OPEN-ISSUE-001-[Title].md`)
+  - Decision Record (DR) Template (`OPEN-DR-001-[Title].md`)
+  - Status transitions (`OPEN-` to `CLOSED-`)
+  - Cross-PARA resource extraction workflows
 
-### 1. Issue Template (`OPEN-ISSUE-001-[Title].md`)
-```markdown
-# ISSUE-001: [Title]
-
-- **Status**: Open | In Progress | Resolved | WontFix
-- **Priority**: High | Medium | Low
-- **Date**: YYYY-MM-DD
-- **Stage**: 11-blueprint | 12-implementation | 13-code | 21-data | ...
-
-## Problem Description
-
-## Reproduction Steps / Environment
-- Component/Context:
-- Parameters/Inputs:
-- Error Log:
-
-## Investigation Steps
-- [ ] Hypothesis 1:
-- [ ] Hypothesis 2:
-
-## Solution & Resolution (Fill upon completion)
-- Root Cause:
-- Fix:
-- Extracted Resource: → `3_Resources/...` (if reusable)
-```
-
-### 2. Decision Template (`OPEN-DR-001-[Title].md`)
-```markdown
-# DR-001: [Title]
-
-- **Status**: Proposed | Accepted | Superseded
-- **Date**: YYYY-MM-DD
-- **Related Stage**: 13-code | 11-blueprint | ...
-
-## Context & Problem Statement
-
-## Decision
-
-## Options Considered
-
-| Option | Pros | Cons |
-|---|---|---|
-| Option A | | |
-| Option B | | |
-
-## Consequences & Trade-offs
-```
 
 ---
 
@@ -161,9 +114,15 @@ Directory Name Format: `[Priority]-[Type]-[Project_Name]` (or `[Priority]-Collab
 ## 2.1 What
 
 ## 2.2 Why
-
+- scientific gap:
+- practical impact:
+- why now:
+- why us:
+- personal stake:
 ## 2.3 How
-
+- strategy
+- key technical risk
+- Kill / Pivot criteria
 # 3. Background & Related Work
 
 - 
@@ -266,8 +225,8 @@ Directory Name Format: `[Priority]-[Type]-[Project_Name]` (or `[Priority]-Collab
 ## Project Workflows
 
 ### Issue & Solution Extraction Workflow
-1. When a problem arises, create `OPEN-ISSUE-xxx` or `OPEN-DR-xxx` in `00-log/`.
-2. Resolve issue and rename `OPEN-` to `CLOSED-`.
+1. When a problem or decision arises, initialize/use `00-log/` via the [`init-log`](../init-log/SKILL.md) skill and create `OPEN-ISSUE-xxx` or `OPEN-DR-xxx`.
+2. Resolve issue and rename `OPEN-` to `CLOSED-` according to `init-log` lifecycle rules.
 3. **Extraction Check**: If the solution is reusable across future projects, extract it to `3_Resources/SOP-` or `3_Resources/Code-`.
 
 ### Go / Rollback Gate Workflow

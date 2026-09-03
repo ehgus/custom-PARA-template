@@ -48,10 +48,12 @@ The following prefixes can be used across **`1_Projects/`**, **`2_Areas/`**, and
 ### 1. `1_Projects/`
 * **Definition**: Short-term tasks and projects with a specific **Goal** and a clear **Deadline**.
 * **Delegation**: For detailed naming conventions, priority indexing (`01-` to `04-`), formatting rules, and folder initialization, you MUST refer to and use the `init-project` skill.
+* **Logging & Auditing**: For audit trail and lifecycle log initialization (`00-log/` containing `issues/` and `decisions/`), refer to and use the `init-log` skill.
 
 ### 2. `2_Areas/`
 * **Definition**: Long-term domains and responsibilities without fixed deadlines, requiring continuous quality and status management.
 * **Naming Convention**: `[Type]-[Area_Name]` (Uses the Shared Prefix Pool)
+* **Logging & Auditing**: You may use the `init-log` skill to initialize and manage audit logs (`00-log/`) within an area.
 * **Examples**:
   * `Domain-Marketing/` (Main domain: Marketing & outreach)
   * `Ops-Management/` (Operations, equipment, and server administration)
@@ -61,6 +63,7 @@ The following prefixes can be used across **`1_Projects/`**, **`2_Areas/`**, and
 ### 3. `3_Resources/`
 * **Definition**: Reusable reference materials, datasets, code snippets, and protocols for future projects or tasks.
 * **Naming Convention**: `[Type]-[Resource_Name]` (Uses the Shared Prefix Pool)
+* **Logging & Auditing**: You may use the `init-log` skill to initialize and manage audit logs (`00-log/`) within a resource.
 * **Examples**:
   * `Admin-Account_Credentials/`
   * `Template-Documents/`
@@ -115,3 +118,7 @@ The following prefixes can be used across **`1_Projects/`**, **`2_Areas/`**, and
 8. **Mandatory Structure Validation**:
    * Any operation that creates, renames, or moves a directory inside `1_Projects/`, `2_Areas/`, or `3_Resources/` MUST be immediately followed by the execution of the `validate-para-structure` skill.
    * **Zero Tolerance**: If the validation skill returns an error (exit code > 0), the agent must immediately halt, revert the structural change, and report the syntax violation. Do not attempt to bypass the error or proceed with subsequent tasks until the naming syntax passes validation.
+
+9. **Lifecycle & Audit Logging Policy**:
+   * Audit trail folders (`00-log/`), issue tracking (`issues/`), decision records (`decisions/`), and their respective templates across `1_Projects/`, `2_Areas/`, and `3_Resources/` are governed by the `init-log` skill.
+
