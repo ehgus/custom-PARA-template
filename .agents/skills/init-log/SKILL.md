@@ -125,17 +125,35 @@ Inside any project, area, or resource root directory:
 2. **Review & Conclude**: Document options considered with trade-offs. Record the final consensus decision.
 3. **Close / Adopt**: Rename `OPEN-DR-xxx` to `CLOSED-DR-xxx`.
 
+## Target Validation Laws
+
+Before initializing `00-log/` in a target directory, the agent must verify the following constraints:
+
+1. **Existence**: The target directory must exist.
+2. **Workspace Confinement**: The target must be located within the current workspace root (`c:\Users\labdo\Desktop\BMOL`).
+3. **PARA Placement**: The target must be a direct root item inside one of the three active PARA categories:
+   - `1_Projects/[Item_Name]/`
+   - `2_Areas/[Item_Name]/`
+   - `3_Resources/[Item_Name]/`
+   *(Targeting the workspace root itself or nested subdirectories outside the item root is forbidden).*
+4. **Shortcut Resolution**: If the target is a `.lnk` Windows shortcut, resolve the actual target path before proceeding.
+
 ---
 
-## Automation Script
+## Agent Initialization Procedure (Pure File Tools)
 
-You can initialize `00-log/` automatically using the bundled PowerShell script:
+All operations in this skill are executed directly by the agent using native file operations, requiring **no external PowerShell scripts or execution approvals**:
 
-```powershell
-powershell -ExecutionPolicy Bypass -File .\.agents\skills\init-log\init-log.ps1 -TargetPath "<Target_Directory_Path>"
-```
+1. **Inspect Target**: Use `list_dir` on the target folder to verify its existence and check whether `00-log/` already exists.
+2. **Create Directories & Gitkeep**:
+   * If `00-log/issues/` does not exist or is empty, use `write_to_file` to write an empty or commented file at `[Target_Folder]/00-log/issues/.gitkeep`:
+     ```text
+     # Gitkeep for issues log directory
+     ```
+   * If `00-log/decisions/` does not exist or is empty, use `write_to_file` to write an empty or commented file at `[Target_Folder]/00-log/decisions/.gitkeep`:
+     ```text
+     # Gitkeep for decision records directory
+     ```
+   *(Note: Built-in file tools automatically create all parent directories `00-log/issues/` and `00-log/decisions/` upon file creation, eliminating the need for `mkdir` or PowerShell commands).*
 
-### Script Behaviors
-- Validates that the target path is inside the workspace and within `1_Projects/`, `2_Areas/`, or `3_Resources/`.
-- Creates `00-log/issues/` and `00-log/decisions/`.
-- Creates `.gitkeep` files in empty subdirectories to ensure version tracking.
+---

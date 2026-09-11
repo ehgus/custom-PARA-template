@@ -87,7 +87,7 @@ Directory Name Format: `[Priority]-[Type]-[Project_Name]` (or `[Priority]-Collab
 
 The `00-log/` audit trail directory (`issues/` and `decisions/`), file naming conventions, status matrices (`OPEN-` / `CLOSED-`), and templates (`OPEN-ISSUE-xxx`, `OPEN-DR-xxx`) are standardized and managed by the dedicated **`init-log`** skill.
 
-- **Initialization**: Run `init-log` (or `powershell .\.agents\skills\init-log\init-log.ps1 -TargetPath <ProjectPath>`) to set up `00-log/issues/` and `00-log/decisions/` within the project root.
+- **Initialization**: Use the [`init-log`](../init-log/SKILL.md) skill to set up `00-log/issues/` and `00-log/decisions/` (along with `.gitkeep` files) within the project root via native file operations.
 - **Templates & Rules**: Refer to the [`init-log`](../init-log/SKILL.md) skill documentation for:
   - Issue Template (`OPEN-ISSUE-001-[Title].md`)
   - Decision Record (DR) Template (`OPEN-DR-001-[Title].md`)
