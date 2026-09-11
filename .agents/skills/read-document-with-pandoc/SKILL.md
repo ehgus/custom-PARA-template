@@ -30,28 +30,27 @@ This skill allows the agent to read and inspect non-plain-text binary or formatt
 
 ## Execution Workflow
 
-### 1. Pre-Check Pandoc Availability
-Run `pandoc --version`. If the command is not recognized or returns an error:
-* Stop file reading execution immediately.
-* Ask the user to install Pandoc (e.g. `winget install JohnMacFarlane.Pandoc` or download from https://pandoc.org/installing.html).
-
-### 2. Direct Markdown Extraction (To Console)
+### 1. Direct Markdown Extraction (To Console)
 Run `pandoc` via shell to convert the target document into Markdown:
 
-```powershell
+```
 pandoc -t markdown "path/to/document.docx"
 ```
 
-### 3. Extract Content to a Scratch Markdown File (For Large Documents)
+### 2. Extract Content to a Scratch Markdown File (For Large Documents)
 If the document is long, convert it into a temporary scratch file:
 
-```powershell
+```
 pandoc "path/to/large_document.docx" -o "3_Resources/scratch/extracted_doc.md"
 ```
 
-### 4. Extracting Media or Images (Optional)
+### 3. Extracting Media or Images (Optional)
 If the document contains embedded images that need to be preserved:
 
-```powershell
+```
 pandoc "path/to/document.docx" --extract-media="3_Resources/scratch/media" -t markdown
 ```
+
+### Error Handling and User Feedback
+- If the previous commands fail, run `pandoc --version` to check if Pandoc is installed.
+- If the command fails, prompt the user to install Pandoc.
