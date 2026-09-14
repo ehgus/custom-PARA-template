@@ -122,3 +122,8 @@ The following prefixes can be used across **`1_Projects/`**, **`2_Areas/`**, and
 9. **Lifecycle & Audit Logging Policy**:
    * Audit trail folders (`00-log/`), issue tracking (`issues/`), decision records (`decisions/`), and their respective templates across `1_Projects/`, `2_Areas/`, and `3_Resources/` are governed by the `init-log` skill.
 
+10. **Skill Specification & Authoring Policy**:
+    * **Design Philosophy (What over How)**: Skill instructions must focus on declarative goals, structure, and desired outcomes (What) rather than micromanaging internal execution procedures.
+    * **Tool Decoupling**: Do not bind skill instructions to internal agent tool names (e.g., `list_dir`, `write_to_file`, `run_command`) or platform-specific shell scripts unless the skill fundamentally wraps a dedicated external CLI tool. Allow the agent autonomy to determine the most direct execution method.
+    * **Clean Deprecation**: When removing or deprecating a feature or convention, cleanly excise obsolete specifications from the documentation. Avoid cluttering skill files with defensive negative rules or prohibition clauses (e.g., avoid adding "Do NOT create ...").
+
