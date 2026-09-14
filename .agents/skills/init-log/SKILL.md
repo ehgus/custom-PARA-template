@@ -140,20 +140,9 @@ Before initializing `00-log/` in a target directory, the agent must verify the f
 
 ---
 
-## Agent Initialization Procedure (Pure File Tools)
+## Agent Initialization Procedure
 
-All operations in this skill are executed directly by the agent using native file operations, requiring **no external PowerShell scripts or execution approvals**:
-
-1. **Inspect Target**: Use `list_dir` on the target folder to verify its existence and check whether `00-log/` already exists.
-2. **Create Directories & Gitkeep**:
-   * If `00-log/issues/` does not exist or is empty, use `write_to_file` to write an empty or commented file at `[Target_Folder]/00-log/issues/.gitkeep`:
-     ```text
-     # Gitkeep for issues log directory
-     ```
-   * If `00-log/decisions/` does not exist or is empty, use `write_to_file` to write an empty or commented file at `[Target_Folder]/00-log/decisions/.gitkeep`:
-     ```text
-     # Gitkeep for decision records directory
-     ```
-   *(Note: Built-in file tools automatically create all parent directories `00-log/issues/` and `00-log/decisions/` upon file creation, eliminating the need for `mkdir` or PowerShell commands).*
+1. **Inspect Target**: Verify its existence and check whether `00-log/issues/` or `00-log/decisions/` already exist.
+2. **Create Directories**: If `00-log/issues/` or `00-log/decisions/` do not exist, create each directory.
 
 ---
