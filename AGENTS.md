@@ -116,8 +116,9 @@ The following prefixes can be used across **`1_Projects/`**, **`2_Areas/`**, and
      * **ENHANCEMENT**: Describe the new feature, folder prefix, or rule change, and the justification for why it improves the workspace. (Prefix title with `ENHANCEMENT: `)
 
 8. **Mandatory Structure Validation**:
-   * Any operation that creates, renames, or moves a directory inside `1_Projects/`, `2_Areas/`, or `3_Resources/` MUST be immediately followed by the execution of the `validate-para-structure` skill.
-   * **Zero Tolerance**: If the validation skill returns an error (exit code > 0), the agent must immediately halt, revert the structural change, and report the syntax violation. Do not attempt to bypass the error or proceed with subsequent tasks until the naming syntax passes validation.
+   * The `validate-para-structure` skill MUST be executed ONLY when creating, renaming, or moving **top-level item directories directly under** `1_Projects/`, `2_Areas/`, or `3_Resources/` (e.g., creating a new project folder).
+   * **Strict Exemption**: NEVER execute `validate-para-structure` for internal file modifications, file creations, code edits, or internal subdirectory changes within existing projects, areas, or resources.
+   * **Zero Tolerance**: If the validation skill returns an error (exit code > 0) when validating a top-level directory change, the agent must immediately halt, revert the structural change, and report the syntax violation.
 
 9. **Lifecycle & Audit Logging Policy**:
    * Audit trail folders (`00-log/`), issue tracking (`issues/`), decision records (`decisions/`), and their respective templates across `1_Projects/`, `2_Areas/`, and `3_Resources/` are governed by the `init-log` skill.
