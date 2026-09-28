@@ -46,7 +46,7 @@ Directory Name Format: `[Priority]-[Type]-[Project_Name]` (or `[Priority]-Collab
 │
 ├── 11-blueprint/                       [Stage 1: Design & Blueprint] Specifications, designs, architecture
 ├── 12-implementation/                  [Stage 1: Development] Execution logs & operation instructions
-├── 13-code/                            [Stage 1: Software Code & Git] Version control (git)
+├── 13-code/                            [Stage 1: Software Code & Scripts] Source code, notebooks, execution scripts
 │
 ├── 21-data/                            [Stage 2: Execution & Results]
 │   ├── raw/                            ← Read-only raw data or inputs

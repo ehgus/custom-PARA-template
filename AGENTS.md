@@ -128,3 +128,9 @@ The following prefixes can be used across **`1_Projects/`**, **`2_Areas/`**, and
     * **Tool Decoupling**: Do not bind skill instructions to internal agent tool names (e.g., `list_dir`, `write_to_file`, `run_command`) or platform-specific shell scripts unless the skill fundamentally wraps a dedicated external CLI tool. Allow the agent autonomy to determine the most direct execution method.
     * **Clean Deprecation**: When removing or deprecating a feature or convention, cleanly excise obsolete specifications from the documentation. Avoid cluttering skill files with defensive negative rules or prohibition clauses (e.g., avoid adding "Do NOT create ...").
 
+11. **Git Operations & Dummy File Policy**:
+    * **Current State vs. Past History Principle**: Git is a version-control tool for tracking and recording past state changes. AI agents must NEVER use Git commands (e.g., `git log`, `git status`, `git diff`) to understand current project state, inspect existing file contents, or answer inquiries about workspace structure and active guidelines. Standard filesystem tools (`view_file`, directory listings, direct markdown inspection) must always be used instead.
+    * **Information Indispensability Self-Check**: Before executing ANY Git command, the AI agent MUST explicitly pause and verify:
+      * *Is Git-specific information strictly indispensable?*: Does the task fundamentally require version-control metadata (such as commit revisions or commit histories) that cannot be answered by the current filesystem state? If the user's inquiry or task concerns current status, content, or general logic, the agent MUST immediately abort the Git command.
+    * **Prohibition of Dummy Files (`.gitkeep`)**: Never automatically create `.gitkeep`, `.keep`, or any other version-control dummy files in empty directories or project skeletons. Treat directories purely as standard local filesystem folders.
+
