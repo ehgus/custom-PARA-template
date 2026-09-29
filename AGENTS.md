@@ -40,7 +40,9 @@ Workspace/
 ## 2. Rules for AI Agent
 
 ### Inspection & Filesystem Safety
-1. **Filesystem-First Principle**: Inspect project state and file contents directly using file-reading and directory-listing capabilities. Git commands (`git log`, `git status`, `git diff`) MUST NOT be used to explore current state unless version-control metadata (such as commit history) is strictly indispensable.
+1. **Filesystem MCP Inspection & Reading Priority**:
+   * **MCP Inspection & Read Standard**: Agents MUST prioritize Filesystem MCP tools as the primary mechanism for inspecting workspace status, directory structures, and reading file contents.
+   * **Provider Fallback**: Provider-specific native inspection tools MAY be used ONLY if the Filesystem MCP server is unavailable or unsupported in the runtime environment.
 2. **Directory Skeletons**: Empty directories MUST be treated as standard filesystem folders. Agents MUST NOT create placeholder dummy files (`.gitkeep`, `.keep`).
 3. **README.md Policy**: `README.md` files are user-maintained documentation. Agents MUST inspect them for context, but MUST NOT modify, edit, or overwrite them unless explicitly requested by the user.
 
