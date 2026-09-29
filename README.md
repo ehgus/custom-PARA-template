@@ -19,7 +19,16 @@
 
 `.agents/skills/`에 포함된 커스텀 스킬 중 외부 프로그램이나 CLI 도구 연동이 필요한 스킬들의 사전 준비 사항입니다.
 
-### 1. 비텍스트 문서 변환 (`read-document-with-pandoc`)
+### 1. Python 런타임 (`validate-para-structure`, `archive-para-item`, `manage-zotero-library`)
+워크스페이스 구조 검증 스크립트, 아카이브 자동화 스크립트 및 Python 기반 CLI 도구 구동을 위한 기본 환경입니다.
+
+- **필수 도구**: Python 3.10 이상
+- **설치 확인**:
+  ```bash
+  python --version
+  ```
+
+### 2. 비텍스트 문서 변환 (`read-document-with-pandoc`)
 Word(`.docx`), PowerPoint(`.pptx`), OpenDocument(`.odt`), RTF, EPUB, LaTeX(`.tex`), HTML 문서를 Markdown이나 텍스트로 변환하여 분석하는 스킬입니다.
 
 - **필수 도구**: Pandoc CLI
@@ -30,7 +39,7 @@ Word(`.docx`), PowerPoint(`.pptx`), OpenDocument(`.odt`), RTF, EPUB, LaTeX(`.tex
     ```
   - 공식 설치 파일: [Pandoc 공식 다운로드](https://pandoc.org/installing.html)
 
-### 2. Zotero 참고문헌 라이브러리 연동 (`manage-zotero-library`)
+### 3. Zotero 참고문헌 라이브러리 연동 (`manage-zotero-library`)
 로컬 Zotero 데스크톱과 연동하여 논문 검색, DOI/PMID 기반 임포트, BibTeX 내보내기, 본문 인용 처리를 수행하는 스킬입니다.
 
 - **필수 프로그램 및 도구**:
@@ -59,11 +68,11 @@ Word(`.docx`), PowerPoint(`.pptx`), OpenDocument(`.odt`), RTF, EPUB, LaTeX(`.tex
 | `init-para-project` | 기본 PARA 디렉토리 및 AGENTS.md 초기화/검증 | 없음 |
 | `init-project` | 1_Projects 폴더 내 5단계 프로젝트 구조 생성 | 없음 |
 | `init-log` | 00-log 감사 추적(이슈 및 결정 기록) 관리 | 없음 |
-| `validate-para-structure` | 디렉토리 명명 규칙 및 구분자 유효성 검사 | 없음 |
-| `archive-para-item` | ISO 분기 태그를 부여하여 4_Archives로 보관 | 없음 |
+| `validate-para-structure` | 디렉토리 명명 규칙 및 구분자 유효성 검사 | **Python 3** |
+| `archive-para-item` | ISO 분기 태그를 부여하여 4_Archives로 보관 | **Python 3** |
 | `review-paper` | 정형화된 학술 논문 리뷰 포맷 작성 | 없음 |
 | `read-document-with-pandoc` | 문서(docx, pptx 등) Markdown 변환 열람 | **Pandoc CLI** |
-| `manage-zotero-library` | Zotero 논문 검색, 인용 및 라이브러리 관리 | **Zotero Desktop**, **zotero-cli (`uv tool install`)**, JS Bridge 플러그인 *(동적 인용 시 LibreOffice 선택)* |
+| `manage-zotero-library` | Zotero 논문 검색, 인용 및 라이브러리 관리 | **Python 3 (`uv tool install`)**, **Zotero Desktop**, JS Bridge 플러그인 *(동적 인용 시 LibreOffice 선택)* |
 
 ---
 
