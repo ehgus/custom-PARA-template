@@ -21,6 +21,7 @@ def main():
     workspace_root = script_dir.parents[2]
 
     validation_errors = []
+    target_args = [Path(arg).resolve() for arg in sys.argv[1:]]
 
     for cat, pattern in CATEGORIES.items():
         cat_path = workspace_root / cat
@@ -28,7 +29,10 @@ def main():
             continue
 
         for item in sorted(cat_path.iterdir()):
-            if not item.is_dir():
+            if not item.is_dir() or item.name.startswith("."):
+                continue
+
+            if target_args and item.resolve() not in target_args:
                 continue
 
             name_to_check = item.name
