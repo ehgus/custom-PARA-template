@@ -72,16 +72,16 @@ Word(`.docx`), PowerPoint(`.pptx`), OpenDocument(`.odt`), RTF, EPUB, LaTeX(`.tex
 | `archive-para-item` | ISO 분기 태그를 부여하여 4_Archives로 보관 | **Python 3** |
 | `review-paper` | 정형화된 학술 논문 리뷰 포맷 작성 | 없음 |
 | `read-document-with-pandoc` | 문서(docx, pptx 등) Markdown 변환 열람 | **Pandoc CLI** |
-| `manage-zotero-library` | Zotero 논문 검색, 인용 및 라이브러리 관리 | **Python 3 (`uv tool install`)**, **Zotero Desktop**, JS Bridge 플러그인 *(동적 인용 시 LibreOffice 선택)* |
+| `manage-zotero-library` | Zotero 논문 검색, 인용 및 라이브러리 관리 | **Zotero Desktop**, **zotero-cli (`uv tool install`)**, JS Bridge 플러그인 *(동적 인용 시 LibreOffice 선택)* |
 
 ---
 
 ## 권장 사항 (Recommendations)
 
 ### 파일시스템 MCP 서버 (`server-filesystem`)
-에이전트가 워크스페이스 상태 확인(디렉터리 목록 조회, 파일 정보 확인, 검색) 및 파일 내용 열람 시 Filesystem MCP 도구를 최우선으로 활용하도록 **`@modelcontextprotocol/server-filesystem`** MCP 서버 설정을 권장합니다.
+에이전트가 쉘 명령어(`Get-ChildItem` 등)를 매번 실행하지 않고 내부적으로 안전하고 빠르게 디렉터리 목록 조회 및 파일 탐색을 수행할 수 있도록 **`@modelcontextprotocol/server-filesystem`** MCP 서버 등록을 권장합니다.
 
-- **도구 비활성화 지침**: 설치 및 연동 시 `write_file`, `edit_file`, `create_directory`, `move_file` 기능은 반드시 비활성화해야 합니다 (상태 확인 및 읽기 전용 운용).
+- **설정 파일 (Antigravity)**: `~/.gemini/config/mcp_config.json`
 - **설정 예시**:
   ```json
   {
@@ -97,5 +97,5 @@ Word(`.docx`), PowerPoint(`.pptx`), OpenDocument(`.odt`), RTF, EPUB, LaTeX(`.tex
     }
   }
   ```
-  > **Note**: `args`에 접근을 허용할 워크스페이스 절대 경로(예: `"C:/path/to/workspace"`)를 지정해야 합니다.
+  > **Note**: `args`에 접근을 허용할 워크스페이스 또는 상위 디렉터리 절대 경로(예: `"C:/path/to/workspace"`)를 반드시 지정해야 합니다.
 
