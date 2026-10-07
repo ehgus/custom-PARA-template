@@ -41,7 +41,7 @@ Directory Name Format: `[Priority]-[Type]-[Project_Name]` (or `[Priority]-Collab
 │   ├── objective.md                    ← North Star, WHAT, WHY (Gap, Impact, Stake)
 │   └── strategy.md                     ← HOW (Strategy, Risks & Plan B, Pivot Criteria)
 │
-├── 02-background/                      [Stage 0: Idea Exploration] References, notes, resources
+├── 02-resource/                        [Stage 0: Idea Exploration] References, notes, resources
 ├── 03-discussion/                      [Stage 0: Idea Exploration] Discussion notes in Markdown
 │
 ├── 11-blueprint/                       [Stage 1: Design & Blueprint] Specifications, designs, architecture
@@ -75,7 +75,7 @@ Directory Name Format: `[Priority]-[Type]-[Project_Name]` (or `[Priority]-Collab
 | Stage Index | Phase | Description |
 |---|---|---|
 | `00-` | **Audit Logs** | Issues log (`00-log/issues/`) & Decision Records (`00-log/decisions/`) — Delegated to `init-log` skill |
-| `01-`, `02-`, `03-` | **Stage 0: Planning** | Objectives (`01-planning/`), background (`02-background/`), discussion notes (`03-discussion/`) |
+| `01-`, `02-`, `03-` | **Stage 0: Planning** | Objectives (`01-planning/`), resource (`02-resource/`), discussion notes (`03-discussion/`) |
 | `11-`, `12-`, `13-` | **Stage 1: Design** | Blueprints (`11-blueprint/`), development (`12-implementation/`), code (`13-code/`) |
 | `21-` | **Stage 2: Execution** | Raw data/inputs (`21-data/raw/`), processed data, execution logs |
 | `31-`, `32-` | **Stage 3: Review** | Analysis (`31-review/`), deliverables (`32-deliverables/`), Go/Rollback gate |
@@ -123,7 +123,7 @@ The `00-log/` audit trail directory (`issues/` and `decisions/`), file naming co
 - strategy
 - key technical risk
 - Kill / Pivot criteria
-# 3. Background & Related Work
+# 3. Resource
 
 - 
 

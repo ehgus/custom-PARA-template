@@ -43,7 +43,7 @@ When an entry is approved for promotion to `1_Projects/`:
 2. **Execute Project Initialization**:
    - Delegate directory creation to the `init-project` skill.
    - Populate `01-planning/objective.md` with the captured WHAT and WHY rationales.
-   - Populate `02-background/` with captured references, links, and notes.
+   - Populate `02-resource/` with captured references, links, and notes.
 3. **Validate Structure**:
    - Invoke the `validate-para-structure` skill to verify top-level directory compliance.
 4. **Purge Buffer**:

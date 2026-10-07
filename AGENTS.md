@@ -48,7 +48,7 @@ Workspace/
 
 ### File Creation & Placement
 4. **PARA Placement**: Newly generated code, notes, or files MUST reside under the appropriate PARA directory (`1_Projects/`, `2_Areas/`, or `3_Resources/`).
-5. **Project Scopes & References**: Short-term analysis data or newly collected references MUST remain in that project's background folder (`1_Projects/.../02-background/`). Agents MUST NOT move materials to `3_Resources/` unless explicitly requested by the user.
+5. **Project Scopes & References**: Short-term analysis data or newly collected references MUST remain in that project's resource folder (`1_Projects/.../02-resource/`). Agents MUST NOT move materials to `3_Resources/` unless explicitly requested by the user.
 
 ### Skill Delegations
 6. **Project Initialization**: New project folders inside `1_Projects/` MUST be initialized using the `init-project` skill.
